@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-cd /home/DM24/workspace/Time_Series_Forecasting/SC_FTMixer
+# cd /home/DM24/workspace/Time_Series_Forecasting/SC_FTMixer
 
 
 # ETTh2 ETTm1 ETTm2 192 336 720

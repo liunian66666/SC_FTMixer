@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-cd /home/DM24/workspace/Time_Series_Forecasting/SC_FTMixer
+# cd /home/DM24/workspace/Time_Series_Forecasting/SC_FTMixer
 #  
 for dataset in ETTh1 ETTh2  ETTm1  ETTm2 ; do
   if [[ "$dataset" == ETTm* ]]; then

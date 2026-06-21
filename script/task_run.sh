@@ -1,0 +1,1 @@
+bash ./script/SDE_Unified_off_96_diagnostic.sh

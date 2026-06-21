@@ -1,7 +1,5 @@
 from data_provider.data_loader import Dataset_ETT_hour, Dataset_ETT_minute, Dataset_Custom, Dataset_Solar, Dataset_PEMS, \
     Dataset_Pred,Dataset_CEMP
-from data_provider.data_loader_long import Dataset_ETT_hour_Long, Dataset_ETT_minute_Long, Dataset_Custom_Long, \
-    Dataset_Solar_Long, Dataset_PEMS_Long
 from torch.utils.data import DataLoader
 from data_provider.data_loader_calendar import Dataset_Solar_Calendar
 
@@ -15,16 +13,6 @@ data_dict = {
     'PEMS': Dataset_PEMS,
     'custom': Dataset_Custom,
     'CEMP': Dataset_CEMP,
-}
-
-long_data_dict = {
-    'ETTh1': Dataset_ETT_hour_Long,
-    'ETTh2': Dataset_ETT_hour_Long,
-    'ETTm1': Dataset_ETT_minute_Long,
-    'ETTm2': Dataset_ETT_minute_Long,
-    'Solar': Dataset_Solar_Long,
-    'PEMS': Dataset_PEMS_Long,
-    'custom': Dataset_Custom_Long,
 }
 
 
@@ -50,8 +38,8 @@ def data_provider(args, flag):
         freq = args.freq
 
     use_long_spectrum = int(getattr(args, "use_long_spectrum", 0)) == 1
-    if use_long_spectrum and flag != 'pred' and args.data in long_data_dict:
-        Data = long_data_dict[args.data]
+    if use_long_spectrum:
+        raise NotImplementedError("Long spectrum not supported in this backup")
 
     data_kwargs = dict(
         root_path=args.root_path,

@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-cd /home/DM24/workspace/Time_Series_Forecasting/SC_FTMixer
+# cd /home/DM24/workspace/Time_Series_Forecasting/SC_FTMixer
 
 python3 -u main_sde.py \
   --task_name long_term_forecast \

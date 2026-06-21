@@ -1,6 +1,6 @@
 import os
 import torch
-from models.SC_FTMixer_SDE_Unified import Model as SC_FTMixer_SDE_Unified
+import models.SC_FTMixer_SDE_Unified as SC_FTMixer_SDE_Unified
 
 
 class Exp_Basic(object):

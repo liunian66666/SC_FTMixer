@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-cd /home/DM24/workspace/Time_Series_Forecasting/SC_FTMixer
+# cd /home/DM24/workspace/Time_Series_Forecasting/SC_FTMixer
 export TMPDIR=/tmp
 
 # 96 192 336

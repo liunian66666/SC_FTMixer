@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-cd /home/DM24/workspace/Time_Series_Forecasting/SC_FTMixer
+# cd /home/DM24/workspace/Time_Series_Forecasting/SC_FTMixer
 export TMPDIR=/tmp
 # 
 PRED_LIST="${PRED_LIST:-96 192 336 720}"
