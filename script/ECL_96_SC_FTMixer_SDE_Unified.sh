@@ -4,7 +4,7 @@ set -e
 export TMPDIR=/tmp
 
 #  720使用64batch
-for pred_len in 96 192 336  ; do
+for pred_len in 96 192 336 720; do
   python3 -u main_sde.py \
     --task_name long_term_forecast \
     --is_training 1 \
@@ -36,7 +36,7 @@ for pred_len in 96 192 336  ; do
     --sde_cycle_len 168 \
     --sde_slots_per_hour 1 \
     --sde_calendar_gate_init 2.0 \
-    --sde_hidden 192 \
+    --sde_hidden 256 \
     --sde_rec_weight 0.25 \
     --sde_spectral_weight 0.75
 done
