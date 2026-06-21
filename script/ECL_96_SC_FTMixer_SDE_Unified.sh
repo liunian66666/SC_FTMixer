@@ -3,8 +3,8 @@ set -e
 # cd /home/DM24/workspace/Time_Series_Forecasting/SC_FTMixer
 export TMPDIR=/tmp
 
-#  96 192 336 720使用64batch
-for pred_len in 720; do
+#  720使用64batch
+for pred_len in 96 192 336  ; do
   python3 -u main_sde.py \
     --task_name long_term_forecast \
     --is_training 1 \
@@ -23,7 +23,7 @@ for pred_len in 720; do
     --e_layers 1 \
     --n_heads 1 \
     --dropout 0 \
-    --batch_size 64 \
+    --batch_size 128 \
     --learning_rate 0.005 \
     --train_epochs 100 \
     --patience 10 \
