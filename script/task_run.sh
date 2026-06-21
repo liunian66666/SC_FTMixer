@@ -1,1 +1,1 @@
-bash ./script/SDE_Unified_off_96_diagnostic.sh
+bash ./script/ECL_96_SC_FTMixer_SDE_Unified.sh
