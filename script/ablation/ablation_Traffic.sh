@@ -58,5 +58,5 @@ run_ablation_set() {
 }
 
 run_ablation_set 96
-# run_ablation_set 720   # uncomment after 96 verified
+run_ablation_set 720   # uncomment after 96 verified
 echo "=== Traffic ablation complete ==="

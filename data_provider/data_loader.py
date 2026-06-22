@@ -319,10 +319,13 @@ class Dataset_PEMS(Dataset):
 
         train_ratio = 0.6
         valid_ratio = 0.2
-        train_data = data[:int(train_ratio * len(data))]
-        valid_data = data[int(train_ratio * len(data)): int((train_ratio + valid_ratio) * len(data))]
-        test_data = data[int((train_ratio + valid_ratio) * len(data)):]
+        train_end = int(train_ratio * len(data))
+        valid_end = int((train_ratio + valid_ratio) * len(data))
+        train_data = data[:train_end]
+        valid_data = data[train_end:valid_end]
+        test_data = data[valid_end:]
         total_data = [train_data, valid_data, test_data]
+        self.split_start = [0, train_end, valid_end][self.set_type]
         data = total_data[self.set_type]
 
         if self.scale:
@@ -345,8 +348,10 @@ class Dataset_PEMS(Dataset):
         seq_y = self.data_y[r_begin:r_end]
         seq_x_mark = torch.zeros((seq_x.shape[0], 1))
         seq_y_mark = torch.zeros((seq_x.shape[0], 1))
+        forecast_start = self.split_start + index + self.seq_len
+        phase_index = np.int64(forecast_start % 288)
 
-        return seq_x, seq_y, seq_x_mark, seq_y_mark
+        return seq_x, seq_y, seq_x_mark, seq_y_mark, phase_index
 
     def __len__(self):
         return len(self.data_x) - self.seq_len - self.pred_len + 1
