@@ -31,6 +31,8 @@ class Model(nn.Module):
         self.phase_mode = str(_get(configs, "sde_phase_mode", "auto")).lower()
         self.slots_per_hour = int(_get(configs, "sde_slots_per_hour", 1))
         self.use_sde = bool(int(_get(configs, "use_sde", 1)))
+        self.use_dynamic_filter = bool(int(_get(configs, "use_dynamic_filter", 1)))
+        self.fix_calendar_gate = bool(int(_get(configs, "fix_calendar_gate", 0)))
         self.output_attention = bool(_get(configs, "output_attention", False))
         freq_bins = self.seq_len // 2 + 1
 
@@ -127,7 +129,10 @@ class Model(nn.Module):
         )
 
         if self.use_sde:
-            gate = torch.sigmoid(self.calendar_gate)
+            if self.fix_calendar_gate:
+                gate = torch.ones_like(self.calendar_gate)
+            else:
+                gate = torch.sigmoid(self.calendar_gate)
             static = (
                 self.global_spectrum
                 + gate * self.calendar_residual[phase]
@@ -136,9 +141,12 @@ class Model(nn.Module):
             static = torch.zeros_like(spectrum.real)
 
         dynamic = torch.complex(spectrum.real - static, spectrum.imag)
-        filt = torch.fft.rfft(self.dynamic_filter, dim=-1, norm="ortho")
-        filtered = dynamic * filt
-        reconstructed = torch.complex(filtered.real + static, filtered.imag)
+        if self.use_dynamic_filter:
+            filt = torch.fft.rfft(self.dynamic_filter, dim=-1, norm="ortho")
+            filtered = dynamic * filt
+            reconstructed = torch.complex(filtered.real + static, filtered.imag)
+        else:
+            reconstructed = torch.complex(dynamic.real + static, dynamic.imag)
         z = torch.fft.irfft(
             reconstructed, n=self.seq_len, dim=-1, norm="ortho"
         )

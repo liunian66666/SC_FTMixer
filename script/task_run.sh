@@ -1,1 +1,1 @@
-bash ./script/ECL_96_SC_FTMixer_SDE_Unified.sh
+bash ./script/ablation/ablation_ETTm2.sh

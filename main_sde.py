@@ -81,6 +81,8 @@ if __name__ == '__main__':
     parser.add_argument('--sde_calendar_gate_init', type=float, default=2.0)
     parser.add_argument('--use_global_sde', type=int, default=1)
     parser.add_argument('--use_calendar_sde', type=int, default=1)
+    parser.add_argument('--use_dynamic_filter', type=int, default=1)
+    parser.add_argument('--fix_calendar_gate', type=int, default=0)
 
     # Mixed loss
     parser.add_argument('--mae_weight', type=float, default=0.0)
