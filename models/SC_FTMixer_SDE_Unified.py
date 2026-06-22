@@ -31,6 +31,8 @@ class Model(nn.Module):
         self.phase_mode = str(_get(configs, "sde_phase_mode", "auto")).lower()
         self.slots_per_hour = int(_get(configs, "sde_slots_per_hour", 1))
         self.use_sde = bool(int(_get(configs, "use_sde", 1)))
+        self.use_global_sde = bool(int(_get(configs, "use_global_sde", 1)))
+        self.use_calendar_sde = bool(int(_get(configs, "use_calendar_sde", 1)))
         self.use_dynamic_filter = bool(int(_get(configs, "use_dynamic_filter", 1)))
         self.fix_calendar_gate = bool(int(_get(configs, "fix_calendar_gate", 0)))
         self.output_attention = bool(_get(configs, "output_attention", False))
@@ -133,10 +135,11 @@ class Model(nn.Module):
                 gate = torch.ones_like(self.calendar_gate)
             else:
                 gate = torch.sigmoid(self.calendar_gate)
-            static = (
-                self.global_spectrum
-                + gate * self.calendar_residual[phase]
-            )
+            static = torch.zeros_like(spectrum.real)
+            if self.use_global_sde:
+                static = static + self.global_spectrum
+            if self.use_calendar_sde:
+                static = static + gate * self.calendar_residual[phase]
         else:
             static = torch.zeros_like(spectrum.real)
 
