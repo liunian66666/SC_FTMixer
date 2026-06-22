@@ -28,10 +28,6 @@ run_ablation() {
   done
 }
 
-run_ablation "Full"        --sde_calendar_gate_init "${GATE_INIT}" --fix_calendar_gate 0 --use_global_sde 1 --use_calendar_sde 1 --use_dynamic_filter 1
-run_ablation "NoSDE"       --use_sde 0 --sde_calendar_gate_init "${GATE_INIT}" --fix_calendar_gate 0 --use_global_sde 1 --use_calendar_sde 1 --use_dynamic_filter 1
-run_ablation "GlobalOnly"  --sde_calendar_gate_init "${GATE_INIT}" --fix_calendar_gate 0 --use_global_sde 1 --use_calendar_sde 0 --use_dynamic_filter 1
-run_ablation "CalendarOnly" --sde_calendar_gate_init "${GATE_INIT}" --fix_calendar_gate 0 --use_global_sde 0 --use_calendar_sde 1 --use_dynamic_filter 1
-run_ablation "NoGate"      --sde_calendar_gate_init "${GATE_INIT}" --fix_calendar_gate 1 --use_global_sde 1 --use_calendar_sde 1 --use_dynamic_filter 1
-run_ablation "NoDynFilt"   --sde_calendar_gate_init "${GATE_INIT}" --fix_calendar_gate 0 --use_global_sde 1 --use_calendar_sde 1 --use_dynamic_filter 0
+run_ablation_set 96
+run_ablation_set 720
 echo "=== Traffic ablation complete ==="
