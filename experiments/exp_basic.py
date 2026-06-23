@@ -1,6 +1,7 @@
 import os
 import torch
 import models.SC_FTMixer_SDE_Unified as SC_FTMixer_SDE_Unified
+import models.SC_FTMixer_SDE_Unified_LSM as SC_FTMixer_SDE_Unified_LSM
 
 
 class Exp_Basic(object):
@@ -8,6 +9,7 @@ class Exp_Basic(object):
         self.args = args
         self.model_dict = {
             'SC_FTMixer_SDE_Unified': SC_FTMixer_SDE_Unified,
+            'SC_FTMixer_SDE_Unified_LSM': SC_FTMixer_SDE_Unified_LSM,
         }
         self.device = self._acquire_device()
         self.model = self._build_model().to(self.device)
