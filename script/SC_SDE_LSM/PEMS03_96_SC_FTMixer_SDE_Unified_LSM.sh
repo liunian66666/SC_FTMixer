@@ -13,7 +13,7 @@ HIDDEN=192; GATE_INIT="1.0"
 PHASE_MODE="day_slot"; CYCLE_LEN=288; SLOTS=12
 NUM_WORKERS=0
 
-for pl in 96 192 336 720; do
+for pl in 12 24 48 96; do
   echo "=== PEMS03 pred_len=${pl} ==="
   python3 -u main_sde.py \
     --task_name long_term_forecast --is_training 1 \
@@ -30,7 +30,7 @@ for pl in 96 192 336 720; do
     --sde_hidden "${HIDDEN}" --sde_rec_weight 0.5 --sde_spectral_weight 0.5 \
     --sde_calendar_gate_init "${GATE_INIT}" \
     --use_global_sde 1 --use_calendar_sde 1 --use_dynamic_filter 1 --fix_calendar_gate 0 \
-    --use_sensor_mixer 1 --sensor_rank 8 --sensor_alpha_init -4.0 \
+    --use_sensor_mixer 0 --sensor_rank 8 --sensor_alpha_init -4.0 \
     --num_workers "${NUM_WORKERS}"
 done
 echo "=== PEMS03 complete ==="
