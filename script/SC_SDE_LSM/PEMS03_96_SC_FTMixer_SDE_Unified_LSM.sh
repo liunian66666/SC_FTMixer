@@ -1,6 +1,6 @@
 #!/bin/bash
 set -euo pipefail
-cd /home/DM24/workspace/Time_Series_Forecasting/SC_FTMixer_SDE_Unified
+# cd /home/DM24/workspace/Time_Series_Forecasting/SC_FTMixer_SDE_Unified
 
 # PEMS03 — 358 sensors, 5-min, enc_in=358
 # Recommended: sensor_mixer=1, rank=8, rec:spec=0.5:0.5, gate_init=1.0
