@@ -147,7 +147,7 @@ class Model(nn.Module):
         dec_out = dec_out * stdev[:, 0:1, :] + means[:, 0:1, :]
         return dec_out
 
-    def forward(self, x_enc, x_mark_enc=None, x_dec=None, x_mark_dec=None, mask=None):
+    def forward(self, x_enc, x_mark_enc=None, x_dec=None, x_mark_dec=None, mask=None, **kwargs):
         if self.task_name in ["long_term_forecast", "short_term_forecast", "forecast"]:
             dec_out = self.forecast(x_enc, x_mark_enc, x_dec, x_mark_dec)
             return dec_out[:, -self.pred_len:, :]
