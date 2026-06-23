@@ -1,0 +1,68 @@
+{
+  "model": "XLinear",
+  "dataset": "ECL",
+  "input_len": 96,
+  "pred_len": 96,
+  "batch_size": 16,
+  "precision": "FP32",
+  "seed": 2021,
+  "warmup_iterations": 20,
+  "measurement_iterations": 100,
+  "parameters_total": 5490050,
+  "parameters_trainable": 5490050,
+  "one_epoch_seconds": 108.37354269251227,
+  "one_epoch_iterations": 1138,
+  "one_epoch_mean_ms_per_iter": 95.23158408832361,
+  "stable_train": {
+    "mean_ms": 156.5244511142373,
+    "std_ms": 20.92476586416822,
+    "median_ms": 165.80930165946484,
+    "p95_ms": 181.92233517766,
+    "samples": 100
+  },
+  "inference_batch": {
+    "mean_ms": 45.732097551226616,
+    "std_ms": 11.1788279446737,
+    "median_ms": 47.21436835825443,
+    "p95_ms": 65.16153272241354,
+    "samples": 100
+  },
+  "single_sample_latency": {
+    "mean_ms": 10.163108818233013,
+    "std_ms": 7.278951942992023,
+    "median_ms": 8.545635268092155,
+    "p95_ms": 21.0444999858737,
+    "samples": 100
+  },
+  "peak_train_memory_mib": 783.125,
+  "peak_inference_memory_mib": 596.6826171875,
+  "gpu": "Tesla T4",
+  "gpu_compute_capability": [
+    7,
+    5
+  ],
+  "cuda_version": "11.7",
+  "torch_version": "2.0.0+cu117",
+  "driver_version": "555.58.02",
+  "repo_path": "/home/DM24/workspace/Time_Series_Forecasting/XLinear-main",
+  "config": {
+    "task_name": "long_term_forecast",
+    "seq_len": 96,
+    "label_len": 48,
+    "pred_len": 96,
+    "enc_in": 321,
+    "dec_in": 321,
+    "c_out": 321,
+    "features": "M",
+    "output_attention": false,
+    "d_model": 2048,
+    "t_ff": 512,
+    "c_ff": 32,
+    "usenorm": 1,
+    "embed_dropout": 0.2,
+    "head_dropout": 0.2,
+    "t_dropout": 0.2,
+    "c_dropout": 0.1
+  },
+  "learning_rate": 0.0002
+}

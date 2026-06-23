@@ -235,3 +235,54 @@ def visual(true, preds=None, name='./pic/test.pdf'):
         plt.plot(preds, label='Prediction', linewidth=2)
     plt.legend()
     plt.savefig(name, bbox_inches='tight')
+    plt.close()
+
+
+def visual_forecast_case(
+    history,
+    true,
+    pred,
+    name,
+    title=None,
+):
+    """Plot one forecast case with an explicit forecast boundary."""
+    history = np.asarray(history).reshape(-1)
+    true = np.asarray(true).reshape(-1)
+    pred = np.asarray(pred).reshape(-1)
+    start = len(history)
+    x_hist = np.arange(start)
+    x_forecast = np.arange(start, start + len(true))
+
+    plt.figure(figsize=(10, 5))
+    plt.plot(x_hist, history, label='History', color='#4c78a8', linewidth=1.8)
+    plt.plot(
+        x_forecast,
+        true,
+        label='GroundTruth',
+        color='#4c78a8',
+        linewidth=2.0,
+    )
+    plt.plot(
+        x_forecast,
+        pred,
+        label='Prediction',
+        color='#f58518',
+        linewidth=2.0,
+    )
+    plt.axvline(
+        start - 0.5,
+        color='black',
+        linestyle='--',
+        linewidth=1.2,
+        label='Forecast Start',
+    )
+    plt.axvspan(start - 0.5, start + len(true) - 0.5, color='gray', alpha=0.08)
+    if title:
+        plt.title(title)
+    plt.xlabel('Time Step')
+    plt.ylabel('Normalized Value')
+    plt.legend()
+    plt.grid(alpha=0.2)
+    plt.tight_layout()
+    plt.savefig(name, bbox_inches='tight')
+    plt.close()

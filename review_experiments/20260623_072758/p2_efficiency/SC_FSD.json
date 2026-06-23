@@ -1,0 +1,71 @@
+{
+  "model": "SC-FSD",
+  "dataset": "ECL",
+  "input_len": 96,
+  "pred_len": 96,
+  "batch_size": 16,
+  "precision": "FP32",
+  "seed": 2021,
+  "warmup_iterations": 20,
+  "measurement_iterations": 100,
+  "parameters_total": 2695770,
+  "parameters_trainable": 2695770,
+  "one_epoch_seconds": 9.240506820380688,
+  "one_epoch_iterations": 1138,
+  "one_epoch_mean_ms_per_iter": 8.119953269227318,
+  "stable_train": {
+    "mean_ms": 5.829955339431763,
+    "std_ms": 0.16497322847922685,
+    "median_ms": 5.822286009788513,
+    "p95_ms": 6.058629788458347,
+    "samples": 100
+  },
+  "inference_batch": {
+    "mean_ms": 0.8390922099351883,
+    "std_ms": 0.02926889057153379,
+    "median_ms": 0.8343420922756195,
+    "p95_ms": 0.8795337751507759,
+    "samples": 100
+  },
+  "single_sample_latency": {
+    "mean_ms": 0.7172348722815514,
+    "std_ms": 0.04842763797112351,
+    "median_ms": 0.7112864404916763,
+    "p95_ms": 0.7799357175827026,
+    "samples": 100
+  },
+  "peak_train_memory_mib": 93.1220703125,
+  "peak_inference_memory_mib": 93.0693359375,
+  "gpu": "Tesla T4",
+  "gpu_compute_capability": [
+    7,
+    5
+  ],
+  "cuda_version": "11.7",
+  "torch_version": "2.0.0+cu117",
+  "driver_version": "555.58.02",
+  "repo_path": "/home/DM24/workspace/Time_Series_Forecasting/SC_FTMixer_SDE_Unified",
+  "config": {
+    "task_name": "long_term_forecast",
+    "seq_len": 96,
+    "label_len": 48,
+    "pred_len": 96,
+    "enc_in": 321,
+    "dec_in": 321,
+    "c_out": 321,
+    "features": "M",
+    "output_attention": false,
+    "sde_hidden": 192,
+    "sde_cycle_len": 168,
+    "freq": "h",
+    "sde_phase_mode": "hour_week",
+    "sde_slots_per_hour": 1,
+    "use_sde": 1,
+    "use_global_sde": 1,
+    "use_calendar_sde": 1,
+    "use_dynamic_filter": 1,
+    "fix_calendar_gate": 0,
+    "sde_calendar_gate_init": 2.0
+  },
+  "learning_rate": 0.005
+}

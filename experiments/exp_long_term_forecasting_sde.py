@@ -1,6 +1,11 @@
 from data_provider.data_factory import data_provider
 from experiments.exp_basic import Exp_Basic
-from utils.tools import EarlyStopping, adjust_learning_rate, visual
+from utils.tools import (
+    EarlyStopping,
+    adjust_learning_rate,
+    visual,
+    visual_forecast_case,
+)
 from utils.metrics import metric
 from tqdm import tqdm
 
@@ -516,10 +521,14 @@ class Exp_Long_Term_Forecast(Exp_Basic):
 
         preds = []
         trues = []
+        histories = []
 
         # 只有需要画图时才创建目录
         if getattr(self.args, 'visualize', False):
-            folder_path = os.path.join('./test_results', setting)
+            folder_path = os.path.join(
+                './results/experiment_results',
+                setting
+            )
             if not os.path.exists(folder_path):
                 os.makedirs(folder_path)
 
@@ -549,21 +558,20 @@ class Exp_Long_Term_Forecast(Exp_Basic):
 
                     preds.append(pred)
                     trues.append(true)
-
-                    # 4. 根据 args.visualize 决定是否画图（这是最慢的操作）
-                    if getattr(self.args, 'visualize', False) and i % 20 == 0:
+                    if getattr(self.args, 'visualize', False):
                         input_data = batch_x.detach().cpu().numpy()
                         if test_data.scale and self.args.inverse:
                             input_shape = input_data.shape
-                            input_data = test_data.inverse_transform(input_data.reshape(-1, input_shape[-1])).reshape(input_shape)
-
-                        gt = np.concatenate((input_data[0, :, -1], true[0, :, -1]), axis=0)
-                        pd = np.concatenate((input_data[0, :, -1], pred[0, :, -1]), axis=0)
-                        visual(gt, pd, os.path.join(folder_path, str(i) + '.pdf'))
+                            input_data = test_data.inverse_transform(
+                                input_data.reshape(-1, input_shape[-1])
+                            ).reshape(input_shape)
+                        histories.append(input_data)
 
         # 5. 循环外一次性合并结果（比在循环内逐个合并快）
         preds = np.concatenate(preds, axis=0)
         trues = np.concatenate(trues, axis=0)
+        if getattr(self.args, 'visualize', False):
+            histories = np.concatenate(histories, axis=0)
         print('test shape:', preds.shape, trues.shape)
 
         preds = preds.reshape(-1, preds.shape[-2], preds.shape[-1])
@@ -571,9 +579,78 @@ class Exp_Long_Term_Forecast(Exp_Basic):
 
         print('test shape:', preds.shape, trues.shape)
 
-        folder_path = os.path.join('./results/experiment_results', setting)
-        if not os.path.exists(folder_path):
-            os.makedirs(folder_path)
+        if getattr(self.args, 'visualize', False):
+            sample_mse = np.mean((preds - trues) ** 2, axis=(1, 2))
+            order = np.argsort(sample_mse)
+            case_indices = {
+                'best_case': int(order[max(0, int(0.10 * (len(order) - 1)))]),
+                'typical_case': int(order[len(order) // 2]),
+                'hard_case': int(order[min(
+                    len(order) - 1,
+                    int(0.90 * (len(order) - 1)),
+                )]),
+            }
+
+            for case_name, sample_idx in case_indices.items():
+                true_sample = trues[sample_idx]
+                pred_sample = preds[sample_idx]
+                history_sample = histories[sample_idx]
+
+                channel_scores = []
+                for channel_idx in range(true_sample.shape[-1]):
+                    true_channel = true_sample[:, channel_idx]
+                    pred_channel = pred_sample[:, channel_idx]
+                    true_std = float(np.std(true_channel))
+                    if true_std < 1e-8:
+                        corr = 0.0
+                    else:
+                        corr = float(np.corrcoef(
+                            true_channel,
+                            pred_channel,
+                        )[0, 1])
+                        if not np.isfinite(corr):
+                            corr = 0.0
+                    channel_mse = float(np.mean(
+                        (pred_channel - true_channel) ** 2
+                    ))
+                    # Prefer a dynamic channel with good shape agreement,
+                    # without selecting only the lowest-error flat channel.
+                    score = corr + 0.15 * np.log1p(true_std) - 0.05 * channel_mse
+                    channel_scores.append(score)
+
+                channel_idx = int(np.argmax(channel_scores))
+                true_channel = true_sample[:, channel_idx]
+                pred_channel = pred_sample[:, channel_idx]
+                history_channel = history_sample[:, channel_idx]
+                local_mse = float(np.mean(
+                    (pred_channel - true_channel) ** 2
+                ))
+                local_mae = float(np.mean(
+                    np.abs(pred_channel - true_channel)
+                ))
+                if np.std(true_channel) < 1e-8:
+                    corr = 0.0
+                else:
+                    corr = float(np.corrcoef(
+                        true_channel,
+                        pred_channel,
+                    )[0, 1])
+                    if not np.isfinite(corr):
+                        corr = 0.0
+
+                title = (
+                    f'{case_name.replace("_", " ").title()} | '
+                    f'Sample={sample_idx}, Channel={channel_idx} | '
+                    f'MSE={local_mse:.4f}, MAE={local_mae:.4f}, '
+                    f'Corr={corr:.3f}'
+                )
+                visual_forecast_case(
+                    history_channel,
+                    true_channel,
+                    pred_channel,
+                    os.path.join(folder_path, f'{case_name}.pdf'),
+                    title=title,
+                )
 
         mae, mse, rmse, mape, mspe = metric(preds, trues)
         print('mse:{}, mae:{}'.format(mse, mae))

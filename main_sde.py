@@ -51,6 +51,7 @@ if __name__ == '__main__':
     parser.add_argument('--dropout', type=float, default=0.0)
     parser.add_argument('--output_attention', action='store_true')
     parser.add_argument('--inverse', action='store_true', default=False)
+    parser.add_argument('--visualize', type=int, default=0,help="Whether to draw figures, 1=enable visualization, 0=disable visualization")
 
     # Training
     parser.add_argument('--num_workers', type=int, default=0)

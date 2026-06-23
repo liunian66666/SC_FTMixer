@@ -56,25 +56,28 @@ run_pems() {
 }
 
 # PEMS03: 358 sensors
-run_pems PEMS03 358 32 12
-run_pems PEMS03 358 32 24
-run_pems PEMS03 358 32 48
-run_pems PEMS03 358 32 96
+#dataset   enc_in  batch  pred_len
+run_pems PEMS03 358 64 12
+# run_pems PEMS03 358 32 24
+# run_pems PEMS03 358 32 48
+run_pems PEMS03 358 64 96
 
 # PEMS04: 307 sensors
-run_pems PEMS04 307 32 12
-run_pems PEMS04 307 32 24
-run_pems PEMS04 307 32 48
-run_pems PEMS04 307 32 96
+#dataset   enc_in  batch  pred_len
+run_pems PEMS04 307 64 12
+# run_pems PEMS04 307 32 24
+# run_pems PEMS04 307 32 48
+run_pems PEMS04 307 64 96
 
-# PEMS07: 883 sensors
-run_pems PEMS07 883 16 12
-run_pems PEMS07 883 16 24
-run_pems PEMS07 883 16 48
-run_pems PEMS07 883 16 96
+# # PEMS07: 883 sensors
+# run_pems PEMS07 883 16 12
+# run_pems PEMS07 883 16 24
+# run_pems PEMS07 883 16 48
+# run_pems PEMS07 883 16 96
 
-# PEMS08: 170 sensors
-run_pems PEMS08 170 64 12
-run_pems PEMS08 170 64 24
-run_pems PEMS08 170 64 48
-run_pems PEMS08 170 64 96
+# # PEMS08: 170 sensors
+# #dataset   enc_in  batch  pred_len
+# run_pems PEMS08 170 64 12
+# run_pems PEMS08 170 64 24
+# run_pems PEMS08 170 64 48
+# run_pems PEMS08 170 64 96

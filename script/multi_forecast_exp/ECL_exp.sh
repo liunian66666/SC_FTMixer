@@ -76,7 +76,7 @@ python3 -u main_sde.py \
   --sde_rec_weight 0.25 \
   --sde_spectral_weight 0.75
 
-# pred_len=336, MSE=0.173968, MAE=0.267746
+# pred_len=336, MSE=0.171729, MAE=0.264817
 python3 -u main_sde.py \
   --task_name long_term_forecast \
   --is_training 1 \
@@ -108,12 +108,12 @@ python3 -u main_sde.py \
   --sde_phase_mode hour_week \
   --sde_cycle_len 168 \
   --sde_slots_per_hour 1 \
-  --sde_calendar_gate_init 2.0 \
-  --sde_hidden 192 \
+  --sde_calendar_gate_init 3.0 \
+  --sde_hidden 256 \
   --sde_rec_weight 0.25 \
   --sde_spectral_weight 0.75
 
-# pred_len=720, MSE=0.211326, MAE=0.299144
+# pred_len=720, MSE=0.209431, MAE=0.296847
 python3 -u main_sde.py \
   --task_name long_term_forecast \
   --is_training 1 \
@@ -145,7 +145,7 @@ python3 -u main_sde.py \
   --sde_phase_mode hour_week \
   --sde_cycle_len 168 \
   --sde_slots_per_hour 1 \
-  --sde_calendar_gate_init 2.0 \
-  --sde_hidden 192 \
+  --sde_calendar_gate_init 3.0 \
+  --sde_hidden 320 \
   --sde_rec_weight 0.25 \
   --sde_spectral_weight 0.75
