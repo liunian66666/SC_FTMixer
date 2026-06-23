@@ -1,6 +1,6 @@
 {
-  "completed_runs": 54,
-  "failed_runs": 4,
+  "completed_runs": 61,
+  "failed_runs": 5,
   "expected_runs": 117,
-  "completion_fraction": 0.46153846153846156
+  "completion_fraction": 0.5213675213675214
 }

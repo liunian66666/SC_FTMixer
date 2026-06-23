@@ -86,9 +86,11 @@ if __name__ == '__main__':
     parser.add_argument('--fix_calendar_gate', type=int, default=0)
 
     # Low-rank sensor mixer (LSM)
-    parser.add_argument('--use_sensor_mixer', type=int, default=0)
-    parser.add_argument('--sensor_rank', type=int, default=8)
-    parser.add_argument('--sensor_alpha_init', type=float, default=-4.0)
+    
+    parser.add_argument("--use_sensor_mixer", type=int, default=0)
+    parser.add_argument("--sensor_rank", type=int, default=4)
+    parser.add_argument("--sensor_alpha_init", type=float, default=-6.0)
+    parser.add_argument("--sensor_max_scale", type=float, default=0.1)
 
     # Mixed loss
     parser.add_argument('--mae_weight', type=float, default=0.0)
