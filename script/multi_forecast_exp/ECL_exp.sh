@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
-cd /home/DM24/workspace/Time_Series_Forecasting/SC_FTMixer_SDE_Unified
+# cd /home/DM24/workspace/Time_Series_Forecasting/SC_FTMixer_SDE_Unified
 
 # # pred_len=96, MSE=0.137833, MAE=0.231513
 # python3 -u main_sde.py \
