@@ -75,3 +75,18 @@ run_ablation_set 96
 - Experiment: `experiments/exp_long_term_forecasting_sde.py`
 - Registry: `experiments/exp_basic.py`
 - Scripts: `script/ablation/ablation_{ETTh1,ETTm2,Traffic,Weather}.sh`
+
+## Dataset scope update - 2026-06-23
+
+PEMS is no longer used in the current SC-FSD paper experiment plan.
+
+Reason: PEMS03/PEMS04 require stronger cross-sensor/spatial traffic propagation than the current SC-FSD temporal/frequency design provides, while PEMS07/PEMS08 gains are not enough to justify keeping a separate PEMS protocol in the main paper. To keep the paper story focused and avoid unnecessary reruns, all follow-up experiment monitoring, ablation, hyperparameter search, and result tables should exclude PEMS unless explicitly re-enabled later.
+
+Current effective dataset scope:
+
+- Main long-term forecasting: ETTh1, ETTh2, ETTm1, ETTm2, Weather, ECL, Traffic
+- Ablation focus: ETTm2, Weather, Traffic, and optionally ECL if needed
+- Supplementary candidates: ILI or other non-PEMS datasets only after confirming loader/calendar support
+
+Do not spend additional compute on PEMS runs; existing PEMS logs are archival only and should not be used for new paper tables.
+

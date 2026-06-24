@@ -1,0 +1,74 @@
+[
+  {
+    "dataset": "PEMS07",
+    "pred_len": 96,
+    "tag": "B0_Default",
+    "mse": 0.19078212976455688,
+    "mae": 0.27082017064094543,
+    "log": "/home/DM24/workspace/Time_Series_Forecasting/SC_FTMixer_SDE_Unified/review_experiments/20260623_pems_07_08_96_search/logs/PEMS07_96_96_PemsSearchV2_B0_Default.log",
+    "command": "/home/DM24/workspace/Time_Series_Forecasting/SC_FTMixer_SDE_Unified/review_experiments/20260623_pems_07_08_96_search/commands/PEMS07_96_96_PemsSearchV2_B0_Default.sh"
+  },
+  {
+    "dataset": "PEMS08",
+    "pred_len": 96,
+    "tag": "B4_LR3",
+    "mse": 0.30208539962768555,
+    "mae": 0.3178541958332062,
+    "log": "/home/DM24/workspace/Time_Series_Forecasting/SC_FTMixer_SDE_Unified/review_experiments/20260623_pems_07_08_96_search/logs/PEMS08_96_96_PemsSearchV2_B4_LR3.log",
+    "command": "/home/DM24/workspace/Time_Series_Forecasting/SC_FTMixer_SDE_Unified/review_experiments/20260623_pems_07_08_96_search/commands/PEMS08_96_96_PemsSearchV2_B4_LR3.sh"
+  },
+  {
+    "dataset": "PEMS08",
+    "pred_len": 96,
+    "tag": "B1_R50S50_G2",
+    "mse": 0.3042580783367157,
+    "mae": 0.32248902320861816,
+    "log": "/home/DM24/workspace/Time_Series_Forecasting/SC_FTMixer_SDE_Unified/review_experiments/20260623_pems_07_08_96_search/logs/PEMS08_96_96_PemsSearchV2_B1_R50S50_G2.log",
+    "command": "/home/DM24/workspace/Time_Series_Forecasting/SC_FTMixer_SDE_Unified/review_experiments/20260623_pems_07_08_96_search/commands/PEMS08_96_96_PemsSearchV2_B1_R50S50_G2.sh"
+  },
+  {
+    "dataset": "PEMS08",
+    "pred_len": 96,
+    "tag": "B5_H320",
+    "mse": 0.30456697940826416,
+    "mae": 0.31975555419921875,
+    "log": "/home/DM24/workspace/Time_Series_Forecasting/SC_FTMixer_SDE_Unified/review_experiments/20260623_pems_07_08_96_search/logs/PEMS08_96_96_PemsSearchV2_B5_H320.log",
+    "command": "/home/DM24/workspace/Time_Series_Forecasting/SC_FTMixer_SDE_Unified/review_experiments/20260623_pems_07_08_96_search/commands/PEMS08_96_96_PemsSearchV2_B5_H320.sh"
+  },
+  {
+    "dataset": "PEMS08",
+    "pred_len": 96,
+    "tag": "B3_R50S50_G1",
+    "mse": 0.30740270018577576,
+    "mae": 0.32342585921287537,
+    "log": "/home/DM24/workspace/Time_Series_Forecasting/SC_FTMixer_SDE_Unified/review_experiments/20260623_pems_07_08_96_search/logs/PEMS08_96_96_PemsSearchV2_B3_R50S50_G1.log",
+    "command": "/home/DM24/workspace/Time_Series_Forecasting/SC_FTMixer_SDE_Unified/review_experiments/20260623_pems_07_08_96_search/commands/PEMS08_96_96_PemsSearchV2_B3_R50S50_G1.sh"
+  },
+  {
+    "dataset": "PEMS08",
+    "pred_len": 96,
+    "tag": "B6_B32",
+    "mse": 0.3090798556804657,
+    "mae": 0.3334997892379761,
+    "log": "/home/DM24/workspace/Time_Series_Forecasting/SC_FTMixer_SDE_Unified/review_experiments/20260623_pems_07_08_96_search/logs/PEMS08_96_96_PemsSearchV2_B6_B32.log",
+    "command": "/home/DM24/workspace/Time_Series_Forecasting/SC_FTMixer_SDE_Unified/review_experiments/20260623_pems_07_08_96_search/commands/PEMS08_96_96_PemsSearchV2_B6_B32.sh"
+  },
+  {
+    "dataset": "PEMS08",
+    "pred_len": 96,
+    "tag": "B2_R25S75_G1",
+    "mse": 0.3108319342136383,
+    "mae": 0.3365778923034668,
+    "log": "/home/DM24/workspace/Time_Series_Forecasting/SC_FTMixer_SDE_Unified/review_experiments/20260623_pems_07_08_96_search/logs/PEMS08_96_96_PemsSearchV2_B2_R25S75_G1.log",
+    "command": "/home/DM24/workspace/Time_Series_Forecasting/SC_FTMixer_SDE_Unified/review_experiments/20260623_pems_07_08_96_search/commands/PEMS08_96_96_PemsSearchV2_B2_R25S75_G1.sh"
+  },
+  {
+    "dataset": "PEMS08",
+    "pred_len": 96,
+    "tag": "B0_Default",
+    "mse": 0.3110477030277252,
+    "mae": 0.3248753845691681,
+    "log": "/home/DM24/workspace/Time_Series_Forecasting/SC_FTMixer_SDE_Unified/review_experiments/20260623_pems_07_08_96_search/logs/PEMS08_96_96_PemsSearchV2_B0_Default.log",
+    "command": "/home/DM24/workspace/Time_Series_Forecasting/SC_FTMixer_SDE_Unified/review_experiments/20260623_pems_07_08_96_search/commands/PEMS08_96_96_PemsSearchV2_B0_Default.sh"
+  }
+]

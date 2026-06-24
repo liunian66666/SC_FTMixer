@@ -6,4 +6,4 @@
 # bash ./script/multi_forecast/PEMS_SC_FTMixer_SDE_Unified.sh
 # bash ./script/tuning/pems03_04_tuning_v1.sh
 
-bash ./script/review_search/ECL_target_search.sh
+bash ./script/tuning/ECL_target_search_lr005.sh
