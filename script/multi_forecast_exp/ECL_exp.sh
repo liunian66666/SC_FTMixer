@@ -2,44 +2,44 @@
 set -euo pipefail
 cd /home/DM24/workspace/Time_Series_Forecasting/SC_FTMixer_SDE_Unified
 
-# pred_len=96, MSE=0.137833, MAE=0.231513
-python3 -u main_sde.py \
-  --task_name long_term_forecast \
-  --is_training 1 \
-  --root_path ./dataset/electricity/ \
-  --data_path electricity.csv \
-  --model_id ECL_96_96_ExpBest \
-  --model SC_FTMixer_SDE_Unified \
-  --data custom \
-  --features M \
-  --seq_len 96 \
-  --label_len 48 \
-  --pred_len 96 \
-  --freq h \
-  --enc_in 321 \
-  --d_model 32 \
-  --d_ff 64 \
-  --e_layers 1 \
-  --n_heads 1 \
-  --dropout 0 \
-  --batch_size 128 \
-  --learning_rate 0.005 \
-  --train_epochs 100 \
-  --patience 10 \
-  --lradj cosine_warmup \
-  --des ExpBest_ECL_96 \
-  --itr 1 \
-  --num_workers 2 \
-  --use_sde 1 \
-  --sde_phase_mode hour_week \
-  --sde_cycle_len 168 \
-  --sde_slots_per_hour 1 \
-  --sde_calendar_gate_init 2.0 \
-  --sde_hidden 192 \
-  --sde_rec_weight 0.25 \
-  --sde_spectral_weight 0.75
+# # pred_len=96, MSE=0.137833, MAE=0.231513
+# python3 -u main_sde.py \
+#   --task_name long_term_forecast \
+#   --is_training 1 \
+#   --root_path ./dataset/electricity/ \
+#   --data_path electricity.csv \
+#   --model_id ECL_96_96_ExpBest \
+#   --model SC_FTMixer_SDE_Unified \
+#   --data custom \
+#   --features M \
+#   --seq_len 96 \
+#   --label_len 48 \
+#   --pred_len 96 \
+#   --freq h \
+#   --enc_in 321 \
+#   --d_model 32 \
+#   --d_ff 64 \
+#   --e_layers 1 \
+#   --n_heads 1 \
+#   --dropout 0 \
+#   --batch_size 128 \
+#   --learning_rate 0.005 \
+#   --train_epochs 100 \
+#   --patience 10 \
+#   --lradj cosine_warmup \
+#   --des ExpBest_ECL_96 \
+#   --itr 1 \
+#   --num_workers 2 \
+#   --use_sde 1 \
+#   --sde_phase_mode hour_week \
+#   --sde_cycle_len 168 \
+#   --sde_slots_per_hour 1 \
+#   --sde_calendar_gate_init 2.0 \
+#   --sde_hidden 192 \
+#   --sde_rec_weight 0.25 \
+#   --sde_spectral_weight 0.75
 
-# pred_len=192, MSE=0.155974, MAE=0.248696
+# pred_len=192, MSE=0.155974, MAE=0.248696 batch=128
 python3 -u main_sde.py \
   --task_name long_term_forecast \
   --is_training 1 \
@@ -59,7 +59,7 @@ python3 -u main_sde.py \
   --e_layers 1 \
   --n_heads 1 \
   --dropout 0 \
-  --batch_size 128 \
+  --batch_size 32 \
   --learning_rate 0.005 \
   --train_epochs 100 \
   --patience 10 \
@@ -76,7 +76,7 @@ python3 -u main_sde.py \
   --sde_rec_weight 0.25 \
   --sde_spectral_weight 0.75
 
-# pred_len=336, MSE=0.171729, MAE=0.264817
+# pred_len=336, MSE=0.171729, MAE=0.264817 batch=128
 python3 -u main_sde.py \
   --task_name long_term_forecast \
   --is_training 1 \
@@ -96,7 +96,7 @@ python3 -u main_sde.py \
   --e_layers 1 \
   --n_heads 1 \
   --dropout 0 \
-  --batch_size 128 \
+  --batch_size 32  \
   --learning_rate 0.005 \
   --train_epochs 100 \
   --patience 10 \
@@ -113,7 +113,7 @@ python3 -u main_sde.py \
   --sde_rec_weight 0.25 \
   --sde_spectral_weight 0.75
 
-# pred_len=720, MSE=0.209431, MAE=0.296847
+# pred_len=720, MSE=0.209431, MAE=0.296847 batch=128
 python3 -u main_sde.py \
   --task_name long_term_forecast \
   --is_training 1 \
@@ -133,7 +133,7 @@ python3 -u main_sde.py \
   --e_layers 1 \
   --n_heads 1 \
   --dropout 0 \
-  --batch_size 64 \
+  --batch_size 32 \
   --learning_rate 0.005 \
   --train_epochs 100 \
   --patience 10 \
