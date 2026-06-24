@@ -29,7 +29,7 @@ Source: `script/multi_forecast_exp/*.sh`
 | Traffic | 336 | 0.459374 | 0.292489 |
 | Traffic | 720 | 0.490631 | 0.306957 |
 | ECL | 96 | 0.136225 | 0.229712 |
-| ECL | 192 | 0.154745 | 0.247229 |
+| ECL | 192 | 0.152863 | 0.245013 |
 | ECL | 336 | 0.171729 | 0.264817 |
 | ECL | 720 | 0.209431 | 0.296847 |
 
@@ -43,13 +43,13 @@ Source: `script/multi_forecast_exp/*.sh`
 | ETTm2 | 0.264218 | 0.308664 |
 | Weather | 0.237369 | 0.263056 |
 | Traffic | 0.456961 | 0.290883 |
-| ECL | 0.168033 | 0.259651 |
+| ECL | 0.167562 | 0.259097 |
 
 ## ECL best configurations
 
 | Pred Len | Batch Size | Hidden | Gate Init | Rec/Spectral | Learning Rate | Status |
 |---:|---:|---:|---:|---:|---:|---|
 | 96 | 16 | 256 | 2.0 | 0.25/0.75 | 0.005 | Verified |
-| 192 | 128 | 256 | 2.0 | 0.25/0.75 | 0.005 | Verified; BS16 candidate currently running |
+| 192 | 16 | 256 | 2.0 | 0.25/0.75 | 0.005 | Verified |
 | 336 | 32 | 256 | 3.0 | 0.25/0.75 | 0.005 | Verified |
 | 720 | 32 | 320 | 3.0 | 0.25/0.75 | 0.005 | Verified |
